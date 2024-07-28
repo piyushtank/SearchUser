@@ -37,6 +37,7 @@ class SearchUserInfo: ObservableObject {
     
     private func setupSearch() {
         $searchText
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 guard let self = self else { return }
                 Task {
