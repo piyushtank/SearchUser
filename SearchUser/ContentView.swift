@@ -5,8 +5,6 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
     @State private var searchText: String = "search-user"
     
