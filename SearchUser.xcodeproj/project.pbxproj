@@ -14,6 +14,7 @@
 		0EADA7212C56C9D100C8A95A /* SearchUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA7202C56C9D100C8A95A /* SearchUserTests.swift */; };
 		0EADA72B2C56C9D100C8A95A /* SearchUserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA72A2C56C9D100C8A95A /* SearchUserUITests.swift */; };
 		0EADA72D2C56C9D100C8A95A /* SearchUserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA72C2C56C9D100C8A95A /* SearchUserUITestsLaunchTests.swift */; };
+		0EADA73D2C56DFDE00C8A95A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA73C2C56DFDE00C8A95A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		0EADA7262C56C9D100C8A95A /* SearchUserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchUserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EADA72A2C56C9D100C8A95A /* SearchUserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserUITests.swift; sourceTree = "<group>"; };
 		0EADA72C2C56C9D100C8A95A /* SearchUserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0EADA73C2C56DFDE00C8A95A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,12 @@
 		0EADA70E2C56C9CF00C8A95A /* SearchUser */ = {
 			isa = PBXGroup;
 			children = (
+				0EADA73A2C56DF6700C8A95A /* Views */,
+				0EADA73B2C56DFBF00C8A95A /* ViewModel */,
+				0EADA7392C56DF5E00C8A95A /* Model */,
 				0EADA70F2C56C9CF00C8A95A /* SearchUserApp.swift */,
 				0EADA7112C56C9CF00C8A95A /* ContentView.swift */,
+				0EADA73C2C56DFDE00C8A95A /* User.swift */,
 				0EADA7132C56C9D100C8A95A /* Assets.xcassets */,
 				0EADA7152C56C9D100C8A95A /* Preview Content */,
 			);
@@ -259,6 +265,7 @@
 			files = (
 				0EADA7122C56C9CF00C8A95A /* ContentView.swift in Sources */,
 				0EADA7102C56C9CF00C8A95A /* SearchUserApp.swift in Sources */,
+				0EADA73D2C56DFDE00C8A95A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
