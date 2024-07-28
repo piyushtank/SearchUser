@@ -8,8 +8,6 @@ import SwiftUI
 struct SearchUserView: View {
     @ObservedObject var searchUserInfo: SearchUserInfo
     
-    var users = ["user1", "user2", "user3", "user4"]
-
     var body: some View {
         NavigationView {
             VStack {
@@ -17,7 +15,7 @@ struct SearchUserView: View {
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-                List(users, id: \.self) { user in
+                List(searchUserInfo.users) { user in
                     HStack {
                         Image(systemName: "globe")
                             .imageScale(.large)
@@ -29,11 +27,11 @@ struct SearchUserView: View {
                         Spacer()
                             .frame(width: 12)
                         
-                        Text("Display Name")
+                        Text(user.displayName)
                             .font(Font.headline.weight(.bold))
                             .lineLimit(1)
                         
-                        Text(user)
+                        Text(user.username)
                             .font(Font.headline.weight(.light))
                             .lineLimit(1)
                     }
