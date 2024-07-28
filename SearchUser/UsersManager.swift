@@ -2,20 +2,15 @@
 //  UsersManager.swift
 //  SearchUser
 //
-//  Created by Bhavisha Jethwa on 7/28/24.
-//
 
 import Foundation
+import Combine
 
-class UsersManager {
-    var users = [User]()
+class UsersManager: ObservableObject {
     
-    @MainActor
-    func update(users: [User]) {
-        self.users = users
-    }
+    @Published private(set) var users: [User] = []
     
-    func fetchUsers(with term:String) async {
+    func fetchUsers(with term: String) async {
         guard var urlComponents = URLComponents(string: UsersManager.baseURLString) else { return }
         let queryItemQuery = URLQueryItem(name: "query", value: term)
         urlComponents.queryItems = [queryItemQuery]
@@ -25,19 +20,20 @@ class UsersManager {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let apiResponse = try JSONDecoder().decode(APIResponse.self, from: data)
-            usersReceived(results: apiResponse.users, for: term)
+            await usersReceived(results: apiResponse.users, for: term)
         } catch {
             print("API call failed: \(error.localizedDescription)")
-            fetchFailed(with:error)
+            fetchFailed(with: error)
         }
     }
     
+    @MainActor
     private func usersReceived(results: [User], for term: String) {
         self.users = results
     }
     
     private func fetchFailed(with error: Error) {
-        
+        print("Fetch failed: \(error)")
     }
     
     struct APIResponse: Codable {

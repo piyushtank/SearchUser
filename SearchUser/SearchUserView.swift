@@ -17,12 +17,14 @@ struct SearchUserView: View {
                 
                 List(searchUserInfo.users) { user in
                     HStack {
-                        Image(systemName: "globe")
-                            .imageScale(.large)
-                            .background(.yellow)
-                            .foregroundStyle(.tint)
-                            .frame(width: 30, height: 30, alignment: .center)
-                            .cornerRadius(10.0)
+                        AsyncImage(url: URL(string: user.avatarURL)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 28, height: 28)
+                        .cornerRadius(4.0)
+                        .padding(.leading, 16)
                         
                         Spacer()
                             .frame(width: 12)
@@ -35,9 +37,17 @@ struct SearchUserView: View {
                             .font(Font.headline.weight(.light))
                             .lineLimit(1)
                     }
+                    .background(.white)
+                    .padding(.trailing, 16)
+                    .listRowInsets(EdgeInsets())
+                    .frame(height: 44)
+                    .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
+                        return 16
+                    }
                 }
             }
             .listStyle(PlainListStyle())
+            .background(.white)
         }
         .navigationTitle("Search User")
     }
