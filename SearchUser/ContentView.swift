@@ -6,14 +6,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var searchText: String = "search-user"
+    @ObservedObject var searchUserInfo: SearchUserInfo
     
     var users = ["user1", "user2", "user3", "user4"]
 
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search users...", text: $searchText)
+                TextField("Search users...", text: $searchUserInfo.searchText)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 

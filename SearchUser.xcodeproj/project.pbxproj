@@ -105,11 +105,11 @@
 				0EADA7392C56DF5E00C8A95A /* Model */,
 				0EADA70F2C56C9CF00C8A95A /* SearchUserApp.swift */,
 				0EADA7112C56C9CF00C8A95A /* ContentView.swift */,
-				0EADA73C2C56DFDE00C8A95A /* User.swift */,
 				0EADA73E2C56E25E00C8A95A /* SearchUserInfo.swift */,
+				0EADA7402C56E5A900C8A95A /* UsersManager.swift */,
+				0EADA73C2C56DFDE00C8A95A /* User.swift */,
 				0EADA7132C56C9D100C8A95A /* Assets.xcassets */,
 				0EADA7152C56C9D100C8A95A /* Preview Content */,
-				0EADA7402C56E5A900C8A95A /* UsersManager.swift */,
 			);
 			path = SearchUser;
 			sourceTree = "<group>";

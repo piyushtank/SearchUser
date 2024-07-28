@@ -7,9 +7,12 @@ import SwiftUI
 
 @main
 struct SearchUserApp: App {
+    
+    @StateObject var searchUserInfo = SearchUserInfo()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(searchUserInfo: searchUserInfo)
         }
     }
 }
