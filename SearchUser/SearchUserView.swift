@@ -1,11 +1,11 @@
 //
-//  ContentView.swift
+//  SearchUserView.swift
 //  SearchUser
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct SearchUserView: View {
     @ObservedObject var searchUserInfo: SearchUserInfo
     
     var users = ["user1", "user2", "user3", "user4"]
@@ -43,8 +43,4 @@ struct ContentView: View {
         }
         .navigationTitle("Search User")
     }
-}
-
-#Preview {
-    ContentView()
 }

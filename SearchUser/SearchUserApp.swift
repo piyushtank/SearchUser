@@ -12,7 +12,7 @@ struct SearchUserApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(searchUserInfo: searchUserInfo)
+            SearchUserView(searchUserInfo: searchUserInfo)
         }
     }
 }
