@@ -35,7 +35,10 @@ class SearchUserInfo: ObservableObject {
     }
     
     private func searchUsers(with term: String) async {
-        guard !term.isEmpty else { return }
+        guard !term.isEmpty else {
+            await updateUsers(with: [])
+            return
+        }
         
         if let cachedResults = searchCache[term] {
             await updateUsers(with: cachedResults)
