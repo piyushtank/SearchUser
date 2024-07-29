@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2A74BB2C57116D00CD1A18 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74BA2C57116D00CD1A18 /* Color.swift */; };
 		0EADA7102C56C9CF00C8A95A /* SearchUserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA70F2C56C9CF00C8A95A /* SearchUserApp.swift */; };
 		0EADA7122C56C9CF00C8A95A /* SearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA7112C56C9CF00C8A95A /* SearchUserView.swift */; };
 		0EADA7142C56C9D100C8A95A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EADA7132C56C9D100C8A95A /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E2A74BA2C57116D00CD1A18 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0EADA70C2C56C9CF00C8A95A /* SearchUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EADA70F2C56C9CF00C8A95A /* SearchUserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserApp.swift; sourceTree = "<group>"; };
 		0EADA7112C56C9CF00C8A95A /* SearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserView.swift; sourceTree = "<group>"; };
@@ -100,11 +102,10 @@
 		0EADA70E2C56C9CF00C8A95A /* SearchUser */ = {
 			isa = PBXGroup;
 			children = (
+				0EADA70F2C56C9CF00C8A95A /* SearchUserApp.swift */,
 				0EADA73A2C56DF6700C8A95A /* Views */,
 				0EADA73B2C56DFBF00C8A95A /* ViewModel */,
 				0EADA7392C56DF5E00C8A95A /* Model */,
-				0EADA70F2C56C9CF00C8A95A /* SearchUserApp.swift */,
-				0EADA7112C56C9CF00C8A95A /* SearchUserView.swift */,
 				0EADA73E2C56E25E00C8A95A /* SearchUserInfo.swift */,
 				0EADA7402C56E5A900C8A95A /* UsersManager.swift */,
 				0EADA73C2C56DFDE00C8A95A /* User.swift */,
@@ -142,6 +143,7 @@
 		0EADA7392C56DF5E00C8A95A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0EADA7112C56C9CF00C8A95A /* SearchUserView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +151,7 @@
 		0EADA73A2C56DF6700C8A95A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0E2A74BA2C57116D00CD1A18 /* Color.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				0EADA7122C56C9CF00C8A95A /* SearchUserView.swift in Sources */,
 				0EADA7102C56C9CF00C8A95A /* SearchUserApp.swift in Sources */,
 				0EADA73D2C56DFDE00C8A95A /* User.swift in Sources */,
+				0E2A74BB2C57116D00CD1A18 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

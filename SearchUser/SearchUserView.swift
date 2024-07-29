@@ -30,14 +30,19 @@ struct SearchUserView: View {
                             .frame(width: 12)
                         
                         Text(user.displayName)
-                            .font(Font.headline.weight(.bold))
+                            .font(.custom("Lato-Bold", size: 16))
+                            .foregroundColor(Color(hex: "1D1C1D"))
                             .lineLimit(1)
                         
+                        Spacer()
+                            .frame(width:8)
+                        
                         Text(user.username)
-                            .font(Font.headline.weight(.light))
+                            .font(.custom("Lato-Regular", size: 16))
+                            .foregroundColor(Color(hex: "616061"))
                             .lineLimit(1)
                     }
-                    .background(.white)
+                    .background(Color(hex: "FFFFFF"))
                     .padding(.trailing, 16)
                     .listRowInsets(EdgeInsets())
                     .frame(height: 44)
@@ -45,10 +50,10 @@ struct SearchUserView: View {
                         return 16
                     }
                 }
+                .listStyle(PlainListStyle())
+                .background(Color(hex: "FFFFFF"))
             }
-            .listStyle(PlainListStyle())
-            .background(.white)
+            .navigationTitle("Search User")
         }
-        .navigationTitle("Search User")
     }
 }
