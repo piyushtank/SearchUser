@@ -12,6 +12,9 @@
 		0E2A74BF2C5713C700CD1A18 /* SearchUserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74BE2C5713C700CD1A18 /* SearchUserApp.swift */; };
 		0E2A74C12C571DB900CD1A18 /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74C02C571DB900CD1A18 /* UserRowView.swift */; };
 		0E2A74C32C571E8F00CD1A18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74C22C571E8F00CD1A18 /* Constants.swift */; };
+		0E2A74CA2C5728D100CD1A18 /* denylist.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E2A74C62C5728D100CD1A18 /* denylist.txt */; };
+		0E2A74CB2C5728D100CD1A18 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2A74C72C5728D100CD1A18 /* Lato-Bold.ttf */; };
+		0E2A74CC2C5728D100CD1A18 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2A74C82C5728D100CD1A18 /* Lato-Regular.ttf */; };
 		0EADA7142C56C9D100C8A95A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EADA7132C56C9D100C8A95A /* Assets.xcassets */; };
 		0EADA7172C56C9D100C8A95A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EADA7162C56C9D100C8A95A /* Preview Assets.xcassets */; };
 		0EADA7212C56C9D100C8A95A /* SearchUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA7202C56C9D100C8A95A /* SearchUserTests.swift */; };
@@ -45,6 +48,10 @@
 		0E2A74BE2C5713C700CD1A18 /* SearchUserApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserApp.swift; sourceTree = "<group>"; };
 		0E2A74C02C571DB900CD1A18 /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
 		0E2A74C22C571E8F00CD1A18 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0E2A74C62C5728D100CD1A18 /* denylist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = denylist.txt; sourceTree = "<group>"; };
+		0E2A74C72C5728D100CD1A18 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		0E2A74C82C5728D100CD1A18 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		0E2A74CD2C572A7600CD1A18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0EADA70C2C56C9CF00C8A95A /* SearchUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EADA7132C56C9D100C8A95A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EADA7162C56C9D100C8A95A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -83,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E2A74C92C5728D100CD1A18 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0E2A74C62C5728D100CD1A18 /* denylist.txt */,
+				0E2A74C72C5728D100CD1A18 /* Lato-Bold.ttf */,
+				0E2A74C82C5728D100CD1A18 /* Lato-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		0EADA7032C56C9CF00C8A95A = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +123,8 @@
 		0EADA70E2C56C9CF00C8A95A /* SearchUser */ = {
 			isa = PBXGroup;
 			children = (
+				0E2A74CD2C572A7600CD1A18 /* Info.plist */,
+				0E2A74C92C5728D100CD1A18 /* Resources */,
 				0E2A74BE2C5713C700CD1A18 /* SearchUserApp.swift */,
 				0EADA73A2C56DF6700C8A95A /* Views */,
 				0EADA73B2C56DFBF00C8A95A /* ViewModel */,
@@ -275,6 +294,9 @@
 			files = (
 				0EADA7172C56C9D100C8A95A /* Preview Assets.xcassets in Resources */,
 				0EADA7142C56C9D100C8A95A /* Assets.xcassets in Resources */,
+				0E2A74CC2C5728D100CD1A18 /* Lato-Regular.ttf in Resources */,
+				0E2A74CA2C5728D100CD1A18 /* denylist.txt in Resources */,
+				0E2A74CB2C5728D100CD1A18 /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +495,7 @@
 				DEVELOPMENT_TEAM = 57XCXQG24A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SearchUser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -502,6 +525,7 @@
 				DEVELOPMENT_TEAM = 57XCXQG24A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SearchUser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

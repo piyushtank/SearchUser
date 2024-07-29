@@ -17,8 +17,8 @@ struct Constants {
     }
     
     struct Fonts {
-        static let displayNameFont: Font = .custom("Lato-Bold", size: 16)
-        static let userNameFont: Font = .custom("Lato-Regular", size: 16)
+        static let latoBold: Font = .custom("Lato-Bold", size: 16)
+        static let latoRegular: Font = .custom("Lato-Regular", size: 16)
     }
     
     struct Colors {

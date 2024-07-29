@@ -47,7 +47,7 @@ struct DisplayNameView: View {
     
     var body: some View {
         Text(name)
-            .font(Constants.Fonts.displayNameFont)
+            .font(Constants.Fonts.latoBold)
             .foregroundColor(Constants.Colors.displayNameColor)
             .lineLimit(1)
     }
@@ -58,7 +58,7 @@ struct UserNameView: View {
     
     var body: some View {
         Text(name)
-            .font(Constants.Fonts.userNameFont)
+            .font(Constants.Fonts.latoRegular)
             .foregroundColor(Constants.Colors.userNameColor)
             .lineLimit(1)
     }
