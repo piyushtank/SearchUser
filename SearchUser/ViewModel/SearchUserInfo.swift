@@ -41,7 +41,7 @@ class SearchUserInfo: ObservableObject {
             return
         }
         
-        await manager.fetchUsers(with: term)
+        await manager.searchUsers(with: term)
     }
     
     private func observeManager() {

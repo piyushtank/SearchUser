@@ -10,6 +10,7 @@ class SearchUserManager: ObservableObject {
     
     @Published private(set) var users: [SearchUserResult] = []
     private var denylist: Set<String> = []
+    private var apiService: SlackAPI = SlackAPI()
 
     init() {
         loadDenylist()
@@ -27,53 +28,41 @@ class SearchUserManager: ObservableObject {
         }
     }
     
-    func fetchUsers(with term: String) async {
+    func searchUsers(with term: String) async {
         
         if denylist.contains(where: { term.starts(with: $0) }) {
             print("Term is in denylist, skipping API call")
             await updateUsers(with: [])
             return
         }
-        
-        guard var urlComponents = URLComponents(string: SearchUserManager.baseURLString) else { return }
-        let queryItemQuery = URLQueryItem(name: "query", value: term)
-        urlComponents.queryItems = [queryItemQuery]
-        
-        guard let url = urlComponents.url else { return }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let apiResponse = try JSONDecoder().decode(APIResponse.self, from: data)
-            await updateUsers(with: apiResponse.users, for: term)
-        } catch {
-            print("API call failed: \(error.localizedDescription)")
-            fetchFailed(with: error)
+
+        await apiService.fetchUsers(with: term) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let (usersList, term)):
+                Task { @MainActor in
+                    self.updateUsers(with: usersList, for: term)
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
-    @MainActor
-    private func updateUsers(with users: [SearchUserResult], for term: String) {
+    @MainActor private func updateUsers(with users: [SearchUserResult], for term: String) {
         if users.isEmpty {
             // Upadate denylist if no user found for the termaf
         }
         updateUsers(with:users)
     }
     
-    @MainActor
-    private func updateUsers(with users: [SearchUserResult]) {
+    @MainActor private func updateUsers(with users: [SearchUserResult]) {
         self.users = users
     }
     
     private func fetchFailed(with error: Error) {
         print("Fetch failed: \(error)")
     }
-    
-    struct APIResponse: Codable {
-        let ok: Bool
-        let users: [SearchUserResult]
-    }
-    
-    private static let baseURLString = "https://mobile-code-exercise-a7fb88c7afa6.herokuapp.com/search"
 }
 
 
