@@ -1,17 +1,17 @@
 //
-//  UsersManager.swift
-//  SearchUser
+//  SearchUserManager.swift
+//  SearchUserManager
 //
 
 import Foundation
 import Combine
 
-class UsersManager: ObservableObject {
+class SearchUserManager: ObservableObject {
     
     @Published private(set) var users: [User] = []
     
     func fetchUsers(with term: String) async {
-        guard var urlComponents = URLComponents(string: UsersManager.baseURLString) else { return }
+        guard var urlComponents = URLComponents(string: SearchUserManager.baseURLString) else { return }
         let queryItemQuery = URLQueryItem(name: "query", value: term)
         urlComponents.queryItems = [queryItemQuery]
         

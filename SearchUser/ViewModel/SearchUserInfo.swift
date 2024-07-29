@@ -10,17 +10,17 @@ import Foundation
 class SearchUserInfo: ObservableObject {
     @Published var searchText: String = ""
     @Published private(set) var users: [User] = []
-    @Published private var usersManager: UsersManager
+    @Published private var manager: SearchUserManager
     
     private var denylist: Set<String> = []
     private var searchCache: [String: [User]] = [:]
     private var cancellables: Set<AnyCancellable> = []
     
-    init(usersManager: UsersManager = UsersManager()) {
-        self.usersManager = usersManager
+    init(searchUserManager: SearchUserManager = SearchUserManager()) {
+        self.manager = searchUserManager
         loadDenylist()
         setupSearch()
-        observeUsersManager()
+        observeManager()
     }
     
     private func loadDenylist() {
@@ -61,11 +61,11 @@ class SearchUserInfo: ObservableObject {
             return
         }
         
-        await usersManager.fetchUsers(with: term)
+        await manager.fetchUsers(with: term)
     }
     
-    private func observeUsersManager() {
-        usersManager.$users
+    private func observeManager() {
+        manager.$users
             .receive(on: DispatchQueue.main)
             .sink { [weak self] users in
                 self?.users = users
