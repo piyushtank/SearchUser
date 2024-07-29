@@ -12,7 +12,7 @@ class SlackAPI {
     private(set) var users: [SearchUserResult] = []
 
     func fetchUsers(with term: String, 
-                    completion: @escaping (Result<([SearchUserResult], String), Error>) -> Void) async {
+                    completion: @escaping (Result<([User], String), Error>) -> Void) async {
 
         guard var urlComponents = URLComponents(string: SlackAPI.baseURLString) else { return }
         let queryItemQuery = URLQueryItem(name: "query", value: term)
@@ -37,7 +37,7 @@ class SlackAPI {
     
     struct APIResponse: Codable {
         let ok: Bool
-        let users: [SearchUserResult]
+        let users: [User]
     }
     
     private static let baseURLString = "https://mobile-code-exercise-a7fb88c7afa6.herokuapp.com/search"

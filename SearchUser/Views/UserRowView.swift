@@ -11,11 +11,11 @@ struct UserRowView: View {
     
     var body: some View {
         HStack {
-            AvatarView(urlStr: user.avatarURL)
+            AvatarView(user: user)
             Spacer().frame(width: Constants.General.smallSpacerWidth)
             DisplayNameView(name: user.displayName)
             Spacer().frame(width: Constants.General.largeSpacerWidth)
-            UserNameView(name: user.username)
+            UserNameView(name: user.userName)
         }
         .background(Constants.Colors.backgroundColor)
         .padding(.trailing, Constants.General.padding)
@@ -28,13 +28,21 @@ struct UserRowView: View {
 }
 
 struct AvatarView: View {
-    var urlStr: String
+    @ObservedObject var user: SearchUserResult
     
     var body: some View {
-        AsyncImage(url: URL(string: urlStr)) { image in
-            image.resizable()
-        } placeholder: {
-            ProgressView()
+        Group {
+            if let image = user.avatar.uiImage {
+                Image(uiImage: image)
+                    .resizable()
+            } else if user.avatar.isFetching {
+                ProgressView()
+            } else if let _ = user.avatar.failureReason {
+                // draw a default image here
+                Image(systemName: "person")
+            } else {
+                Color.gray
+            }
         }
         .frame(width: Constants.General.avatarWidth, height: Constants.General.avatarHeight)
         .cornerRadius(Constants.General.cornerRadius)

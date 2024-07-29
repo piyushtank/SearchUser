@@ -5,6 +5,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class SearchUserManager: ObservableObject {
     
@@ -42,6 +43,7 @@ class SearchUserManager: ObservableObject {
             case .success(let (usersList, term)):
                 Task { @MainActor in
                     self.updateUsers(with: usersList, for: term)
+                    await self.fetchAvatarImages()
                 }
             case .failure(let error):
                 print(error)
@@ -49,15 +51,22 @@ class SearchUserManager: ObservableObject {
         }
     }
     
-    @MainActor private func updateUsers(with users: [SearchUserResult], for term: String) {
+    
+    func fetchAvatarImages() async {
+        for result in users {
+            await result.fetchAvatarImage()
+        }
+    }
+    
+    @MainActor private func updateUsers(with users: [User], for term: String) {
         if users.isEmpty {
             // Upadate denylist if no user found for the termaf
         }
         updateUsers(with:users)
     }
     
-    @MainActor private func updateUsers(with users: [SearchUserResult]) {
-        self.users = users
+    @MainActor private func updateUsers(with users: [User]) {
+        self.users = users.map { SearchUserResult(user: $0) }
     }
     
     private func fetchFailed(with error: Error) {
