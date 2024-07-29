@@ -12,29 +12,15 @@ class SearchUserInfo: ObservableObject {
     @Published private(set) var users: [User] = []
     @Published private var manager: SearchUserManager
     
-    private var denylist: Set<String> = []
     private var searchCache: [String: [User]] = [:]
     private var cancellables: Set<AnyCancellable> = []
     
     init(searchUserManager: SearchUserManager = SearchUserManager()) {
         self.manager = searchUserManager
-        loadDenylist()
-        setupSearch()
         observeManager()
+        setupSearch()
     }
-    
-    private func loadDenylist() {
-        if let path = Bundle.main.path(forResource: "denylist", ofType: "txt") {
-            do {
-                let content = try String(contentsOfFile: path, encoding: .utf8)
-                let terms = content.split(separator: "\n")
-                denylist = Set(terms.map { String($0) })
-            } catch {
-                print("Error loading denylist: \(error)")
-            }
-        }
-    }
-    
+
     private func setupSearch() {
         $searchText
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
@@ -49,12 +35,6 @@ class SearchUserInfo: ObservableObject {
     
     private func searchUsers(with term: String) async {
         guard !term.isEmpty else { return }
-        
-        if denylist.contains(where: { term.starts(with: $0) }) {
-            print("Term is in denylist, skipping API call")
-            await updateUsers(with: [])
-            return
-        }
         
         if let cachedResults = searchCache[term] {
             await updateUsers(with: cachedResults)

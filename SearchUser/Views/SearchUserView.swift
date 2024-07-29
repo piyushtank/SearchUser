@@ -14,6 +14,9 @@ struct SearchUserView: View {
                 TextField("Search users...", text: $searchUserInfo.searchText)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)  // Disable auto-capitalization
+                    .disableAutocorrection(true) // Disable auto-correction
+                
                 
                 List(searchUserInfo.users) { user in
                     UserRowView(user: user)
