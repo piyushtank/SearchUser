@@ -7,7 +7,7 @@ import SwiftUI
 
 struct UserRowView: View {
     
-    var user: User
+    var user: SearchUserResult
     
     var body: some View {
         HStack {

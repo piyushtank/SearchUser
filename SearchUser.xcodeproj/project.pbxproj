@@ -20,7 +20,7 @@
 		0EADA7212C56C9D100C8A95A /* SearchUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA7202C56C9D100C8A95A /* SearchUserTests.swift */; };
 		0EADA72B2C56C9D100C8A95A /* SearchUserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA72A2C56C9D100C8A95A /* SearchUserUITests.swift */; };
 		0EADA72D2C56C9D100C8A95A /* SearchUserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA72C2C56C9D100C8A95A /* SearchUserUITestsLaunchTests.swift */; };
-		0EADA73D2C56DFDE00C8A95A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA73C2C56DFDE00C8A95A /* User.swift */; };
+		0EADA73D2C56DFDE00C8A95A /* SearchUserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA73C2C56DFDE00C8A95A /* SearchUserResult.swift */; };
 		0EADA73F2C56E25E00C8A95A /* SearchUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA73E2C56E25E00C8A95A /* SearchUserInfo.swift */; };
 		0EADA7412C56E5A900C8A95A /* SearchUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA7402C56E5A900C8A95A /* SearchUserManager.swift */; };
 /* End PBXBuildFile section */
@@ -60,7 +60,7 @@
 		0EADA7262C56C9D100C8A95A /* SearchUserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchUserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EADA72A2C56C9D100C8A95A /* SearchUserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserUITests.swift; sourceTree = "<group>"; };
 		0EADA72C2C56C9D100C8A95A /* SearchUserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0EADA73C2C56DFDE00C8A95A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0EADA73C2C56DFDE00C8A95A /* SearchUserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserResult.swift; sourceTree = "<group>"; };
 		0EADA73E2C56E25E00C8A95A /* SearchUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserInfo.swift; sourceTree = "<group>"; };
 		0EADA7402C56E5A900C8A95A /* SearchUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,7 +164,7 @@
 		0EADA7392C56DF5E00C8A95A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0EADA73C2C56DFDE00C8A95A /* User.swift */,
+				0EADA73C2C56DFDE00C8A95A /* SearchUserResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 				0EADA7412C56E5A900C8A95A /* SearchUserManager.swift in Sources */,
 				0EADA73F2C56E25E00C8A95A /* SearchUserInfo.swift in Sources */,
 				0E2A74BD2C57138D00CD1A18 /* SearchUserView.swift in Sources */,
-				0EADA73D2C56DFDE00C8A95A /* User.swift in Sources */,
+				0EADA73D2C56DFDE00C8A95A /* SearchUserResult.swift in Sources */,
 				0E2A74BB2C57116D00CD1A18 /* Color.swift in Sources */,
 				0E2A74C32C571E8F00CD1A18 /* Constants.swift in Sources */,
 			);

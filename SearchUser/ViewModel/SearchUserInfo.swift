@@ -9,10 +9,10 @@ import Foundation
 
 class SearchUserInfo: ObservableObject {
     @Published var searchText: String = ""
-    @Published private(set) var users: [User] = []
+    @Published private(set) var users: [SearchUserResult] = []
     @Published private var manager: SearchUserManager
     
-    private var searchCache: [String: [User]] = [:]
+    private var searchCache: [String: [SearchUserResult]] = [:]
     private var cancellables: Set<AnyCancellable> = []
     
     init(searchUserManager: SearchUserManager = SearchUserManager()) {
@@ -54,7 +54,7 @@ class SearchUserInfo: ObservableObject {
     }
     
     @MainActor
-    private func updateUsers(with users: [User]) {
+    private func updateUsers(with users: [SearchUserResult]) {
         self.users = users
     }
 }

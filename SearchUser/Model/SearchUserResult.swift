@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct User: Codable, Identifiable {
+struct SearchUserResult: Codable, Identifiable {
     let id: Int
     let displayName: String
     let username: String

@@ -8,7 +8,7 @@ import Combine
 
 class SearchUserManager: ObservableObject {
     
-    @Published private(set) var users: [User] = []
+    @Published private(set) var users: [SearchUserResult] = []
     private var denylist: Set<String> = []
 
     init() {
@@ -52,7 +52,7 @@ class SearchUserManager: ObservableObject {
     }
     
     @MainActor
-    private func updateUsers(with users: [User], for term: String) {
+    private func updateUsers(with users: [SearchUserResult], for term: String) {
         if users.isEmpty {
             // Upadate denylist if no user found for the termaf
         }
@@ -60,7 +60,7 @@ class SearchUserManager: ObservableObject {
     }
     
     @MainActor
-    private func updateUsers(with users: [User]) {
+    private func updateUsers(with users: [SearchUserResult]) {
         self.users = users
     }
     
@@ -70,7 +70,7 @@ class SearchUserManager: ObservableObject {
     
     struct APIResponse: Codable {
         let ok: Bool
-        let users: [User]
+        let users: [SearchUserResult]
     }
     
     private static let baseURLString = "https://mobile-code-exercise-a7fb88c7afa6.herokuapp.com/search"
