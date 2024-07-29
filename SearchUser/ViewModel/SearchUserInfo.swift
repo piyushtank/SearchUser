@@ -14,16 +14,17 @@ class SearchUserInfo: ObservableObject {
     
     private var searchCache: [String: [SearchUserResult]] = [:]
     private var cancellables: Set<AnyCancellable> = []
+    private static var debounceInterval = 300 // MilliSeconds
     
     init(searchUserManager: SearchUserManager = SearchUserManager()) {
         self.manager = searchUserManager
         observeManager()
         setupSearch()
     }
-
+    
     private func setupSearch() {
         $searchText
-            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(SearchUserInfo.debounceInterval), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 guard let self = self else { return }
                 Task {
