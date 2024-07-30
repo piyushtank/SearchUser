@@ -6,7 +6,12 @@
 import Foundation
 import Network
 
-class SlackAPI {
+protocol SlackAPIInterface {
+    func fetchUsers(with term: String,
+                    completion: @escaping (Result<([User], String), Error>) -> Void) async
+}
+
+class SlackAPI: SlackAPIInterface {
     
     private(set) var users: [SearchUserResult] = []
 

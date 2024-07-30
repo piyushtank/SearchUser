@@ -10,14 +10,17 @@ import UIKit
 class SearchUserManager: ObservableObject {
     
     @Published private(set) var users: [SearchUserResult] = []
-    private var denylist: Set<String> = []
-    private var apiService: SlackAPI = SlackAPI()
-    private var storageManager = StorageManager()
-    private var storedUsers: [String: SearchUserResult]?
-    private var storedTermsAndUserIds: [String: [String]]?
-    private var cacheManager: CacheManager = CacheManager()
+    private(set) var denylist: Set<String> = []
+    private let apiService: SlackAPIInterface
+    private let storageManager: StorageManagerInterface
+    private var cacheManager: CacheManagerInterface
 
-    init() {
+    init(apiService: SlackAPIInterface = SlackAPI(),
+         storageManager: StorageManagerInterface = StorageManager(),
+         cacheManager: CacheManagerInterface = CacheManager()) {
+        self.apiService = apiService
+        self.storageManager = storageManager
+        self.cacheManager = cacheManager
         loadDenylist()
     }
 
@@ -42,6 +45,7 @@ class SearchUserManager: ObservableObject {
         }
         
         if let users = cacheManager.searchUserResults(for: term) {
+            print("Term is in cache, skipping API call")
             Task {
                 await updateUserResults(with: users)
             }
@@ -94,18 +98,18 @@ class SearchUserManager: ObservableObject {
     }
     
     func loadStoredUsers(for term: String) async {
-        storedUsers = storageManager.users
-        storedTermsAndUserIds = storageManager.termsAndUserIds
-        if let storedUsers = storedUsers, let storedTermsAndUserIds = storedTermsAndUserIds {
-            if let userIds = storedTermsAndUserIds[term] {
-                var theUsers = [SearchUserResult]()
-                for userId in userIds {
-                    if let user = storedUsers[userId] {
-                        theUsers.append(user)
-                    }
+        print("Using storage to show results")
+
+        let storedUsers = storageManager.users
+        let storedTermsAndUserIds = storageManager.termsAndUserIds
+        if let userIds = storedTermsAndUserIds[term] {
+            var theUsers = [SearchUserResult]()
+            for userId in userIds {
+                if let user = storedUsers[userId] {
+                    theUsers.append(user)
                 }
-                await self.updateUserResults(with: theUsers)
             }
+            await self.updateUserResults(with: theUsers)
         }
     }
     
@@ -138,6 +142,9 @@ class SearchUserManager: ObservableObject {
     private func fetchFailed(with error: Error) {
         print("Fetch failed: \(error)")
     }
+    
+    // Used for tests
+    func setDenylist(_ denylist: Set<String>) {
+        self.denylist = denylist
+    }
 }
-
-

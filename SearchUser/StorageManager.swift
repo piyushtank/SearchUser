@@ -6,7 +6,14 @@
 import Foundation
 import UIKit
 
-class StorageManager {
+protocol StorageManagerInterface {
+    func saveUsers(_ users: [User], for term: String)
+    func saveAvatar(_ image: UIImage, for id: Int)
+    var users: [String: SearchUserResult] { get }
+    var termsAndUserIds: [String: [String]] { get }
+}
+
+class StorageManager: StorageManagerInterface {
     
     private static let usersKey = "Users"
     private static let avatarsKey = "Avatars"

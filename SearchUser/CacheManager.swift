@@ -5,8 +5,14 @@
 
 import UIKit
 
+protocol CacheManagerInterface {
+    mutating func update(_ users: [User], for term: String)
+    mutating func update(_ image: UIImage, for id: Int)
+    func searchUserResults(for term: String) -> [SearchUserResult]?
+}
+
 // The purpose of CacheManager is to implement timeout/refresh cache
-struct CacheManager {
+struct CacheManager: CacheManagerInterface {
     
     private var cache: Cache = Cache(users: [String : User](),
                                      images: [String : UIImage](),

@@ -18,6 +18,10 @@
 		0E2A74D02C57353C00CD1A18 /* SlackAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74CF2C57353C00CD1A18 /* SlackAPIService.swift */; };
 		0E2A74D22C58609600CD1A18 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74D12C58609600CD1A18 /* StorageManager.swift */; };
 		0E2A74D42C58966500CD1A18 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74D32C58966400CD1A18 /* CacheManager.swift */; };
+		0E2A74D72C59596800CD1A18 /* MockSlackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74D62C59596800CD1A18 /* MockSlackAPI.swift */; };
+		0E2A74D92C5959FF00CD1A18 /* MockStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74D82C5959FF00CD1A18 /* MockStorageManager.swift */; };
+		0E2A74DD2C595B8200CD1A18 /* SearchUserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74DC2C595B8200CD1A18 /* SearchUserManagerTests.swift */; };
+		0E2A74DF2C59600B00CD1A18 /* MockCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A74DE2C59600B00CD1A18 /* MockCacheManager.swift */; };
 		0EADA7142C56C9D100C8A95A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EADA7132C56C9D100C8A95A /* Assets.xcassets */; };
 		0EADA7172C56C9D100C8A95A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EADA7162C56C9D100C8A95A /* Preview Assets.xcassets */; };
 		0EADA7212C56C9D100C8A95A /* SearchUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EADA7202C56C9D100C8A95A /* SearchUserTests.swift */; };
@@ -58,6 +62,10 @@
 		0E2A74CF2C57353C00CD1A18 /* SlackAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackAPIService.swift; sourceTree = "<group>"; };
 		0E2A74D12C58609600CD1A18 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		0E2A74D32C58966400CD1A18 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		0E2A74D62C59596800CD1A18 /* MockSlackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSlackAPI.swift; sourceTree = "<group>"; };
+		0E2A74D82C5959FF00CD1A18 /* MockStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageManager.swift; sourceTree = "<group>"; };
+		0E2A74DC2C595B8200CD1A18 /* SearchUserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserManagerTests.swift; sourceTree = "<group>"; };
+		0E2A74DE2C59600B00CD1A18 /* MockCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCacheManager.swift; sourceTree = "<group>"; };
 		0EADA70C2C56C9CF00C8A95A /* SearchUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EADA7132C56C9D100C8A95A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EADA7162C56C9D100C8A95A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -114,6 +122,16 @@
 			path = SlackAPI;
 			sourceTree = "<group>";
 		};
+		0E2A74D52C59592800CD1A18 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0E2A74D62C59596800CD1A18 /* MockSlackAPI.swift */,
+				0E2A74D82C5959FF00CD1A18 /* MockStorageManager.swift */,
+				0E2A74DE2C59600B00CD1A18 /* MockCacheManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		0EADA7032C56C9CF00C8A95A = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +182,9 @@
 		0EADA71F2C56C9D100C8A95A /* SearchUserTests */ = {
 			isa = PBXGroup;
 			children = (
+				0E2A74D52C59592800CD1A18 /* Mocks */,
 				0EADA7202C56C9D100C8A95A /* SearchUserTests.swift */,
+				0E2A74DC2C595B8200CD1A18 /* SearchUserManagerTests.swift */,
 			);
 			path = SearchUserTests;
 			sourceTree = "<group>";
@@ -356,7 +376,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E2A74DF2C59600B00CD1A18 /* MockCacheManager.swift in Sources */,
 				0EADA7212C56C9D100C8A95A /* SearchUserTests.swift in Sources */,
+				0E2A74D92C5959FF00CD1A18 /* MockStorageManager.swift in Sources */,
+				0E2A74DD2C595B8200CD1A18 /* SearchUserManagerTests.swift in Sources */,
+				0E2A74D72C59596800CD1A18 /* MockSlackAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
