@@ -39,21 +39,5 @@ class SlackAPI {
         let users: [User]
     }
     
-    static func checkNetworkStatus(completion: @escaping (Bool) -> Void) {
-        let monitor = NWPathMonitor()
-        let queue = DispatchQueue(label: "NetworkMonitor")
-
-        monitor.pathUpdateHandler = { path in
-            let isConnected = path.status == .satisfied
-            monitor.cancel()
-            DispatchQueue.main.async {
-                completion(isConnected)
-            }
-        }
-
-        monitor.start(queue: queue)
-    }
-    
     private static let baseURLString = "https://mobile-code-exercise-a7fb88c7afa6.herokuapp.com/search"
-
 }
