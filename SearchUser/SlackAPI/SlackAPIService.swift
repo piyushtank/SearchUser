@@ -2,10 +2,9 @@
 //  SlackAPIService.swift
 //  SearchUser
 //
-//  Created by Bhavisha Jethwa on 7/28/24.
-//
 
 import Foundation
+import Network
 
 class SlackAPI {
     
@@ -38,6 +37,21 @@ class SlackAPI {
     struct APIResponse: Codable {
         let ok: Bool
         let users: [User]
+    }
+    
+    static func checkNetworkStatus(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "NetworkMonitor")
+
+        monitor.pathUpdateHandler = { path in
+            let isConnected = path.status == .satisfied
+            monitor.cancel()
+            DispatchQueue.main.async {
+                completion(isConnected)
+            }
+        }
+
+        monitor.start(queue: queue)
     }
     
     private static let baseURLString = "https://mobile-code-exercise-a7fb88c7afa6.herokuapp.com/search"

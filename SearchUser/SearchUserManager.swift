@@ -12,6 +12,9 @@ class SearchUserManager: ObservableObject {
     @Published private(set) var users: [SearchUserResult] = []
     private var denylist: Set<String> = []
     private var apiService: SlackAPI = SlackAPI()
+    private var storageManager = StorageManager()
+    private var storedUsers: [String: SearchUserResult]?
+    private var storedTermsAndUserIds: [String: [String]]?
 
     init() {
         loadDenylist()
@@ -41,20 +44,60 @@ class SearchUserManager: ObservableObject {
             guard let self = self else { return }
             switch result {
             case .success(let (usersList, term)):
+                storageManager.saveUsers(usersList, for: term)
+                
                 Task { @MainActor in
                     self.updateUsers(with: usersList, for: term)
                     await self.fetchAvatarImages()
                 }
             case .failure(let error):
-                print(error)
+                if let urlError = error as? URLError {
+                    switch urlError.code {
+                    case .notConnectedToInternet:
+                        print("No internet connection. Please check your network settings.")
+                        Task {
+                            await self.loadStoredUsers(for: term)
+                        }
+                    case .timedOut:
+                        print("The request timed out. Please try again.")
+                        Task {
+                            await self.loadStoredUsers(for: term)
+                        }
+                    case .cannotFindHost, .cannotConnectToHost:
+                        print("Cannot connect to the server. Please check your server settings.")
+                    default:
+                        print("An unknown network error occurred: \(urlError.localizedDescription)")
+                    }
+                } else {
+                    print("An unknown error occurred: \(error.localizedDescription)")
+                }
             }
         }
     }
     
+    func loadStoredUsers(for term: String) async {
+        storedUsers = storageManager.users
+        storedTermsAndUserIds = storageManager.termsAndUserIds
+        if let storedUsers = storedUsers, let storedTermsAndUserIds = storedTermsAndUserIds {
+            if let userIds = storedTermsAndUserIds[term] {
+                var theUsers = [SearchUserResult]()
+                for userId in userIds {
+                    if let user = storedUsers[userId] {
+                        theUsers.append(user)
+                    }
+                }
+                await self.updateUserResults(with: theUsers)
+            }
+        }
+    }
     
     func fetchAvatarImages() async {
         for result in users {
-            await result.fetchAvatarImage()
+            await result.fetchAvatarImage() { [weak self] id, image in
+                if let self = self {
+                    self.storageManager.saveAvatar(image, id: id)
+                }
+            }
         }
     }
     
@@ -67,6 +110,10 @@ class SearchUserManager: ObservableObject {
     
     @MainActor private func updateUsers(with users: [User]) {
         self.users = users.map { SearchUserResult(user: $0) }
+    }
+    
+    @MainActor private func updateUserResults(with users: [SearchUserResult]) {
+        self.users = users
     }
     
     private func fetchFailed(with error: Error) {

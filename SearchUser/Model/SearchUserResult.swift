@@ -21,10 +21,15 @@ class SearchUserResult: ObservableObject, Identifiable {
         self.user = user
     }
     
+    init(user: User, image: UIImage) {
+        self.user = user
+        self.avatar = .found(image)
+    }
+    
     @Published var avatar: Avatar = .none
     
     @MainActor
-    func fetchAvatarImage() async {
+    func fetchAvatarImage(_ storageClosure: (Int, UIImage) -> Void ) async {
         let url = user.avatarURL
         if !url.isEmpty {
             avatar = .fetching(URL(string: url)!)
@@ -32,6 +37,7 @@ class SearchUserResult: ObservableObject, Identifiable {
                 let image = try await fetchUIImage(from: URL(string: url)!)
                 if url == user.avatarURL {
                     avatar = .found(image)
+                    storageClosure(self.user.id, image)
                 }
             } catch {
                 avatar = .failed("Couldn't set avatar: \(error.localizedDescription)")
