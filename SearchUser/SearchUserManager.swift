@@ -55,9 +55,18 @@ class SearchUserManager: ObservableObject {
                 cacheManager.update(usersList, for: term)
                 storageManager.saveUsers(usersList, for: term)
                 
-                Task { @MainActor in
-                    self.updateUsers(with: usersList, for: term)
-                    await self.fetchAvatarImages()
+                if usersList.isEmpty {
+                    denylist.insert(term)
+                    
+                    // TODO: Should we update the disk with denylist?
+                    // We can either use UserDefaults or update the file. I have chosen
+                    // not updating either, as admin might add new users to the backend.
+                    
+                } else {
+                    Task { @MainActor in
+                        self.updateUsers(with: usersList, for: term)
+                        await self.fetchAvatarImages()
+                    }
                 }
             case .failure(let error):
                 if let urlError = error as? URLError {

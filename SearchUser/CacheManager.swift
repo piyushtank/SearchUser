@@ -5,7 +5,7 @@
 
 import UIKit
 
-// The purpose of CacheManager is to implement the cache refresh logic upon various strategy/timeout
+// The purpose of CacheManager is to implement timeout/refresh cache
 struct CacheManager {
     
     private var cache: Cache = Cache(users: [String : User](),
