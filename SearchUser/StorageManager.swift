@@ -29,7 +29,7 @@ class StorageManager {
         UserDefaults.standard.setValue(theSearches, forKey: StorageManager.searchesKey)
     }
     
-    func saveAvatar(_ image: UIImage, id: Int) {
+    func saveAvatar(_ image: UIImage, for id: Int) {
         var theAvatars = UserDefaults.standard.object(forKey: StorageManager.avatarsKey) as? [String:Data] ?? [String:Data]()
         
         if let data = image.jpegData(compressionQuality: 1.0) {

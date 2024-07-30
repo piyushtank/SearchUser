@@ -15,6 +15,7 @@ class SearchUserManager: ObservableObject {
     private var storageManager = StorageManager()
     private var storedUsers: [String: SearchUserResult]?
     private var storedTermsAndUserIds: [String: [String]]?
+    private var cacheManager: CacheManager = CacheManager()
 
     init() {
         loadDenylist()
@@ -39,11 +40,19 @@ class SearchUserManager: ObservableObject {
             await updateUsers(with: [])
             return
         }
+        
+        if let users = cacheManager.searchUserResults(for: term) {
+            Task {
+                await updateUserResults(with: users)
+            }
+            return
+        }
 
         await apiService.fetchUsers(with: term) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let (usersList, term)):
+                cacheManager.update(usersList, for: term)
                 storageManager.saveUsers(usersList, for: term)
                 
                 Task { @MainActor in
@@ -95,7 +104,8 @@ class SearchUserManager: ObservableObject {
         for result in users {
             await result.fetchAvatarImage() { [weak self] id, image in
                 if let self = self {
-                    self.storageManager.saveAvatar(image, id: id)
+                    self.storageManager.saveAvatar(image, for: id)
+                    self.cacheManager.update(image, for: id)
                 }
             }
         }
