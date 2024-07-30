@@ -13,6 +13,13 @@ protocol StorageManagerInterface {
     var termsAndUserIds: [String: [String]] { get }
 }
 
+/**
+ * Persisatant storage manager to support offline mode.
+ * The storage manager stores following :
+ * 1. { "Users" : [{ "id" : <int>, "display_name":  <String>, username: <String> }, ..] }
+ * 2. { "Avatars":  [{"id" : "Data (image)"}, ..] }
+ * 3. {"Searches: { <string> : [id1, id2...]} }
+ */
 class StorageManager: StorageManagerInterface {
     
     private static let usersKey = "Users"

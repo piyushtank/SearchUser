@@ -11,6 +11,9 @@ protocol SlackAPIInterface {
                     completion: @escaping (Result<([User], String), Error>) -> Void) async
 }
 
+/**
+ * Making API calls to backend
+ */
 class SlackAPI: SlackAPIInterface {
     
     private(set) var users: [SearchUserResult] = []

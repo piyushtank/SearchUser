@@ -16,6 +16,11 @@ struct Constants {
         static let rowHeight: CGFloat = 44.0
     }
     
+    struct Labels {
+        static let navigationTitle = "Search User"
+        static let textFieldPlaceHolder = "Search users..."
+    }
+    
     struct Fonts {
         static let latoBold: Font = .custom("Lato-Bold", size: 16)
         static let latoRegular: Font = .custom("Lato-Regular", size: 16)

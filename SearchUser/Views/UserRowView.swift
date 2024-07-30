@@ -5,6 +5,9 @@
 
 import SwiftUI
 
+/**
+ * UserRowView to display user's data by row in a list
+ */
 struct UserRowView: View {
     
     var user: SearchUserResult
@@ -38,7 +41,7 @@ struct AvatarView: View {
             } else if user.avatar.isFetching {
                 ProgressView()
             } else if let _ = user.avatar.failureReason {
-                // draw a default image here
+                // draw a default image if download fails
                 Image(systemName: "person")
             } else {
                 Color.gray

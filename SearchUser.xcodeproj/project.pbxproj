@@ -156,16 +156,16 @@
 			isa = PBXGroup;
 			children = (
 				0E2A74CD2C572A7600CD1A18 /* Info.plist */,
+				0EADA7132C56C9D100C8A95A /* Assets.xcassets */,
 				0E2A74C92C5728D100CD1A18 /* Resources */,
-				0E2A74BE2C5713C700CD1A18 /* SearchUserApp.swift */,
 				0EADA73A2C56DF6700C8A95A /* Views */,
-				0EADA73B2C56DFBF00C8A95A /* ViewModel */,
 				0EADA7392C56DF5E00C8A95A /* Model */,
-				0E2A74CE2C57352400CD1A18 /* SlackAPI */,
+				0E2A74D32C58966400CD1A18 /* CacheManager.swift */,
+				0E2A74BE2C5713C700CD1A18 /* SearchUserApp.swift */,
 				0EADA7402C56E5A900C8A95A /* SearchUserManager.swift */,
 				0E2A74D12C58609600CD1A18 /* StorageManager.swift */,
-				0E2A74D32C58966400CD1A18 /* CacheManager.swift */,
-				0EADA7132C56C9D100C8A95A /* Assets.xcassets */,
+				0E2A74CE2C57352400CD1A18 /* SlackAPI */,
+				0EADA73B2C56DFBF00C8A95A /* ViewModel */,
 				0EADA7152C56C9D100C8A95A /* Preview Content */,
 			);
 			path = SearchUser;
@@ -210,9 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				0E2A74BA2C57116D00CD1A18 /* Color.swift */,
+				0E2A74C22C571E8F00CD1A18 /* Constants.swift */,
 				0E2A74BC2C57138D00CD1A18 /* SearchUserView.swift */,
 				0E2A74C02C571DB900CD1A18 /* UserRowView.swift */,
-				0E2A74C22C571E8F00CD1A18 /* Constants.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

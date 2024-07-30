@@ -11,12 +11,11 @@ struct SearchUserView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search users...", text: $searchUserInfo.searchText)
+                TextField(Constants.Labels.textFieldPlaceHolder, text: $searchUserInfo.searchText)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .autocapitalization(.none)  // Disable auto-capitalization
                     .disableAutocorrection(true) // Disable auto-correction
-                
                 
                 List(searchUserInfo.users) { user in
                     UserRowView(user: user)
@@ -24,7 +23,7 @@ struct SearchUserView: View {
                 .listStyle(PlainListStyle())
                 .background(Constants.Colors.backgroundColor)
             }
-            .navigationTitle("Search User")
+            .navigationTitle(Constants.Labels.navigationTitle)
         }
     }
 }

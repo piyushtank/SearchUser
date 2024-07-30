@@ -11,7 +11,10 @@ protocol CacheManagerInterface {
     func searchUserResults(for term: String) -> [SearchUserResult]?
 }
 
-// The purpose of CacheManager is to implement timeout/refresh cache
+/**
+ * The CacheManager class is a wrapper on top of the actual Cache. 
+ * The purpose of CacheManager is to implement timeout/refresh cache.
+ */
 struct CacheManager: CacheManagerInterface {
     
     private var cache: Cache = Cache(users: [String : User](),

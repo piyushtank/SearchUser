@@ -28,22 +28,28 @@ class SearchUserResult: ObservableObject, Identifiable {
     
     @Published var avatar: Avatar = .none
     
-    @MainActor
-    func fetchAvatarImage(_ storageClosure: (Int, UIImage) -> Void ) async {
+    func fetchAvatarImage() async -> (Int, UIImage?) {
         let url = user.avatarURL
         if !url.isEmpty {
-            avatar = .fetching(URL(string: url)!)
+            setAvatar(.fetching(URL(string: url)!))
             do {
                 let image = try await fetchUIImage(from: URL(string: url)!)
                 if url == user.avatarURL {
-                    avatar = .found(image)
-                    storageClosure(self.user.id, image)
+                    self.setAvatar(.found(image))
+                    return (self.user.id, image)
                 }
             } catch {
-                avatar = .failed("Couldn't set avatar: \(error.localizedDescription)")
+                self.setAvatar(.failed("Couldn't set avatar: \(error.localizedDescription)"))
             }
         } else {
-            avatar = .none
+            self.setAvatar(.none)
+        }
+        return (self.user.id, nil)
+    }
+    
+    private func setAvatar(_ avatar: Avatar) {
+        DispatchQueue.main.async {
+            self.avatar = avatar
         }
     }
     
