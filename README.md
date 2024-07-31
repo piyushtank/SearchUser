@@ -36,6 +36,12 @@ The`StorageManager` saves following in UserDefaults and retrives when offline mo
 | Disk | 44 Kb/S |
 | Launch Time | TODO | 
 
+App uses following techniques to optimize performance:
+
+1. In memory cache
+2. Text debounce interval of 300 milli seconds
+2. Deny list
+
 ## Security
 
 - User is not authenticated
